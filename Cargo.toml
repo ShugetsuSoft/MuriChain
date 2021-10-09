@@ -1,0 +1,14 @@
+[profile.release]
+panic = 'unwind'
+
+[workspace]
+members = [
+    'node/cli',
+    'node/executor',
+    'node/rpc',
+    'node/runtime',
+    'pallets/muridata',
+]
+
+exclude = [ "substrate" ]
+resolver = "2"

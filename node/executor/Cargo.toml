@@ -1,0 +1,49 @@
+[package]
+name = "node-executor"
+version = "3.0.0-dev"
+authors = ["Shugetsu Software <shugetsu@shugetsu.space>", "Parity Technologies <admin@parity.io>"]
+description = "Substrate node implementation in Rust."
+edition = "2018"
+license = "Apache-2.0"
+homepage = "https://muri.moe"
+repository = "https://github.com/ShugetsuSoft/MuriChain/"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "2.0.0" }
+node-primitives = { version = "2.0.0", path = "../primitives" }
+node-runtime = { version = "3.0.0-dev", path = "../runtime" }
+sc-executor = { version = "0.10.0-dev", path = "../../substrate/client/executor" }
+sp-core = { version = "4.0.0-dev", path = "../../substrate/primitives/core" }
+sp-keystore = { version = "0.10.0-dev", path = "../../substrate/primitives/keystore" }
+sp-state-machine = { version = "0.10.0-dev", path = "../../substrate/primitives/state-machine" }
+sp-trie = { version = "4.0.0-dev", path = "../../substrate/primitives/trie" }
+frame-benchmarking = { version = "4.0.0-dev", path = "../../substrate/frame/benchmarking" }
+
+[dev-dependencies]
+criterion = "0.3.0"
+frame-support = { version = "4.0.0-dev", path = "../../substrate/frame/support" }
+frame-system = { version = "4.0.0-dev", path = "../../substrate/frame/system" }
+node-testing = { version = "3.0.0-dev", path = "../testing" }
+pallet-balances = { version = "4.0.0-dev", path = "../../substrate/frame/balances" }
+pallet-contracts = { version = "4.0.0-dev", path = "../../substrate/frame/contracts" }
+pallet-im-online = { version = "4.0.0-dev", path = "../../substrate/frame/im-online" }
+pallet-timestamp = { version = "4.0.0-dev", path = "../../substrate/frame/timestamp" }
+pallet-treasury = { version = "4.0.0-dev", path = "../../substrate/frame/treasury" }
+sp-application-crypto = { version = "4.0.0-dev", path = "../../substrate/primitives/application-crypto" }
+sp-consensus-babe = { version = "0.10.0-dev", path = "../../substrate/primitives/consensus/babe" }
+sp-runtime = { version = "4.0.0-dev", path = "../../substrate/primitives/runtime" }
+sp-externalities = { version = "0.10.0-dev", path = "../../substrate/primitives/externalities" }
+wat = "1.0"
+futures = "0.3.9"
+
+[features]
+wasmtime = ["sc-executor/wasmtime"]
+wasmi-errno = ["sc-executor/wasmi-errno"]
+stress-test = []
+
+[[bench]]
+name = "bench"
+harness = false

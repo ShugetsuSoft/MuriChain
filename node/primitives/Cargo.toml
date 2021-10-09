@@ -1,0 +1,30 @@
+[package]
+name = "node-primitives"
+version = "2.0.0"
+authors = ["Shugetsu Software <shugetsu@shugetsu.space>", "Parity Technologies <admin@parity.io>"]
+edition = "2018"
+license = "Apache-2.0"
+homepage = "https://muri.moe"
+repository = "https://github.com/ShugetsuSoft/MuriChain/"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false, features = [
+	"derive",
+] }
+frame-system = { version = "4.0.0-dev", default-features = false, path = "../../substrate/frame/system" }
+sp-application-crypto = { version = "4.0.0-dev", default-features = false, path = "../../substrate/primitives/application-crypto" }
+sp-core = { version = "4.0.0-dev", default-features = false, path = "../../substrate/primitives/core" }
+sp-runtime = { version = "4.0.0-dev", default-features = false, path = "../../substrate/primitives/runtime" }
+
+[features]
+default = ["std"]
+std = [
+	"codec/std",
+	"frame-system/std",
+	"sp-application-crypto/std",
+	"sp-core/std",
+	"sp-runtime/std",
+]
